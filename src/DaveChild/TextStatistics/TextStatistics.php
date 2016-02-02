@@ -155,7 +155,7 @@ class TextStatistics
                 Maths::bcCalc(
                     11.8,
                     '*',
-                    Syllables::averageSyllablesPerWord($strText, $this->strEncoding)
+                    Maths::bcCalc(self::syllableCount($strText), '/', self::wordCount($strText))
                 ),
                 '-',
                 15.59
