@@ -377,7 +377,7 @@ class Syllables
         $intWordCount = Text::wordCount($strText, $strEncoding);
         $arrWords = explode(' ', $strText);
         for ($i = 0; $i < $intWordCount; $i++) {
-            if (Syllables::syllableCount($arrWords[$i], $strEncoding) > 2) {
+            if (Syllables::syllableCount($arrWords[$i], $strEncoding) >= 3) {
                 if ($blnCountProperNouns) {
                     $intLongWordCount++;
                 } else {
@@ -390,6 +390,8 @@ class Syllables
             }
         }
 
+        echo 'int word count = ' . $intLongWordCount;
+        
         return $intLongWordCount;
     }
 

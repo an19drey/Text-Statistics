@@ -182,12 +182,12 @@ class TextStatistics
             Maths::bcCalc(
                 Text::averageWordsPerSentence($strText, $this->strEncoding),
                 '+',
-                Syllables::percentageWordsWithThreeSyllables($strText, false, $this->strEncoding)
+                Syllables::percentageWordsWithThreeSyllables($strText, true, $this->strEncoding)
             ),
             '*',
             '0.4'
         );
-
+        
         if ($this->normalise) {
             return Maths::normaliseScore($score, 0, 19, $this->dps);
         } else {
@@ -245,12 +245,33 @@ class TextStatistics
     public function smogIndex($strText = false)
     {
         $strText = $this->setText($strText);
-
-        $score = Maths::bcCalc(
+        
+//        $score = Maths::bcCalc(
+//            1.043,
+//            '*',
+//            Maths::bcCalc(
+//                Maths::bcCalc(
+//                    Maths::bcCalc(
+//                        Syllables::wordsWithThreeSyllables($strText, true, $this->strEncoding),
+//                        '*',
+//                        Maths::bcCalc(
+//                            30,
+//                            '/',
+//                            Text::sentenceCount($strText, $this->strEncoding)
+//                        )
+//                    ),
+//                    '+',
+//                    3.1291
+//                ),
+//                'sqrt',
+//                0
+//            )
+//        );
+        $score =Maths::bcCalc( 
+                Maths::bcCalc(
             1.043,
             '*',
             Maths::bcCalc(
-                Maths::bcCalc(
                     Maths::bcCalc(
                         Syllables::wordsWithThreeSyllables($strText, true, $this->strEncoding),
                         '*',
@@ -260,13 +281,14 @@ class TextStatistics
                             Text::sentenceCount($strText, $this->strEncoding)
                         )
                     ),
-                    '+',
-                    3.1291
-                ),
-                'sqrt',
-                0
+                    'sqrt',
+                    0
             )
+        ),
+        '+',
+        3.129
         );
+        
 
         if ($this->normalise) {
             return Maths::normaliseScore($score, 0, 12, $this->dps);
