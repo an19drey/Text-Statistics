@@ -390,8 +390,6 @@ class Syllables
             }
         }
 
-        echo 'int word count = ' . $intLongWordCount;
-        
         return $intLongWordCount;
     }
 

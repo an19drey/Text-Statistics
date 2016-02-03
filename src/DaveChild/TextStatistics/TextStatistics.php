@@ -267,7 +267,7 @@ class TextStatistics
 //                0
 //            )
 //        );
-        $score =Maths::bcCalc( 
+        $score =Maths::bcCalc(
                 Maths::bcCalc(
             1.043,
             '*',
@@ -286,7 +286,7 @@ class TextStatistics
             )
         ),
         '+',
-        3.129
+        3.1291
         );
         
 
